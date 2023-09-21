@@ -44,7 +44,7 @@ services:
     #  - traefik.http.routers.xsshunter.service=xsshunter
     #  - traefik.http.services.xsshunter.loadbalancer.server.port=8080
     #  # prevent unauthorized access to the admin panel at /app
-    #  - traefik.http.routers.xsshunter-admin.rule=Host(`xss.example.com`, `xss-admin.example.com`) && Path(`/app`)
+    #  - traefik.http.routers.xsshunter-admin.rule=Host(`xss.example.com`, `xss-admin.example.com`) && Path(`/app/`)
     #  - traefik.http.routers.xsshunter-admin.service=xsshunter
     #  - traefik.http.services.xsshunter-admin.loadbalancer.server.port=8080
     #  - traefik.http.routers.xsshunter-admin.middlewares=local-ipwhitelist@file
