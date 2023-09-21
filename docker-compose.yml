@@ -1,5 +1,5 @@
 services:
-  
+
   xsshunterexpress-db:
     image: postgres:latest
     container_name: xsshunter-db
@@ -17,8 +17,8 @@ services:
     volumes:
       - ${DOCKER_VOLUME_STORAGE:-/mnt/docker-volumes}/xsshunter/pg_data:/var/lib/postgresql/data/pgdata
     #networks:
-    #  - dev      
-  
+    #  - dev
+
   xsshunterexpress-service:
     image: l4rm4nd/xsshunter:latest
     container_name: xsshunter-service
@@ -48,7 +48,7 @@ services:
     #  - traefik.docker.network=dev
     #  # Part for optional traefik middlewares
     #  - traefik.http.routers.xsshunter.middlewares=local-ipwhitelist@file
-  
+
   xsshunterexpress-trufflehog:
     image: l4rm4nd/xsshunter:trufflehog
     container_name: xsshunter-trufflehog
@@ -57,6 +57,7 @@ services:
       - 8000
     #networks:
     #  - dev
+
 #networks:
 #  dev:
-#    external: true      
+#    external: true
