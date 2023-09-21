@@ -6,13 +6,7 @@
                 <sidebar-link to="/xsspayloads" name="XSS Payloads" icon="fas fa-file-code" />
                 <sidebar-link to="/settings" name="Settings" icon="fas fa-cogs" />
                 <li class="nav-item mt-5">
-                  <a target="_blank" href="https://twitter.com/rs_loves_bugs" class="nav-link">
-                    <i class="fab fa-twitter"></i>
-                    <p>@rs_loves_bugs</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a target="_blank" href="https://github.com/rs-loves-bugs/xsshunter" class="nav-link">
+                  <a target="_blank" href="https://github.com/l4rm4nd/xsshunter" class="nav-link">
                     <i class="fab fa-github"></i>
                     <p>On Github</p>
                   </a>
