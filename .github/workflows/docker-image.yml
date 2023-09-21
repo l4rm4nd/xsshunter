@@ -3,7 +3,7 @@ name: docker-ci
 on:
   push:
     branches:
-      - 'main'
+      - 'dev'
     paths-ignore:
       - '**/README.md'
       - '**/docker-compose.yml'
@@ -31,7 +31,7 @@ jobs:
           context: .
           file: Dockerfile
           push: true
-          tags: l4rm4nd/xsshunter:latest
+          tags: l4rm4nd/xsshunter:latest-dev
           platforms: linux/amd64
 
   docker-truffel:
@@ -56,5 +56,5 @@ jobs:
           context: .
           file: Dockerfile.trufflehog
           push: true
-          tags: l4rm4nd/xsshunter:trufflehog
+          tags: l4rm4nd/xsshunter:trufflehog-dev
           platforms: linux/amd64
