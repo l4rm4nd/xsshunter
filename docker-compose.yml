@@ -39,15 +39,15 @@ services:
     #  - dev
     #labels:
     #  - traefik.enable=true
-    #  - traefik.http.routers.xsshunter.rule=Host(`xssadmin.example.com`, `xss.example.com`) # adjust to your subdomains
-    #  - traefik.http.services.xsshunter.loadbalancer.server.port=8080
-    #  - traefik.http.middlewares.limit.buffering.maxRequestBodyBytes=50000000 # optional, only necessary for enabled file uploads
-    #  - traefik.http.middlewares.limit.buffering.maxResponseBodyBytes=50000000 # optional, only necessary for enabled file uploads
-    #  - traefik.http.middlewares.limit.buffering.memRequestBodyBytes=50000000 # optional, only necessary for enabled file uploads
-    #  - traefik.http.middlewares.limit.buffering.memResponseBodyBytes=50000000 # optional, only necessary for enabled file uploads
     #  - traefik.docker.network=dev
-    #  # Part for optional traefik middlewares
-    #  - traefik.http.routers.xsshunter.middlewares=local-ipwhitelist@file
+    #  - traefik.http.routers.xsshunter.rule=Host(`xss.example.com`, `xss-admin.example.com`)
+    #  - traefik.http.routers.xsshunter.service=xsshunter
+    #  - traefik.http.services.xsshunter.loadbalancer.server.port=8080
+    #  # prevent unauthorized access to the admin panel at /app
+    #  - traefik.http.routers.xsshunter-admin.rule=Host(`xss.example.com`, `xss-admin.example.com`) && Path(`/app`)
+    #  - traefik.http.routers.xsshunter-admin.service=xsshunter
+    #  - traefik.http.services.xsshunter-admin.loadbalancer.server.port=8080
+    #  - traefik.http.routers.xsshunter-admin.middlewares=local-ipwhitelist@file
 
   xsshunterexpress-trufflehog:
     image: l4rm4nd/xsshunter:trufflehog
