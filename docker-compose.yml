@@ -1,7 +1,7 @@
 services:
   
   xsshunterexpress-db:
-    image: postgres
+    image: postgres:latest
     container_name: xsshunter-db
     restart: unless-stopped
     env_file:
@@ -20,13 +20,15 @@ services:
     #  - dev      
   
   xsshunterexpress-service:
-    build: .
+    image: l4rm4nd/xsshunter:latest
     container_name: xsshunter-service
     restart: unless-stopped
     env_file:
       - .env
     expose:
       - 8080
+    ports:
+      - 8080:8080
     volumes:
       - ${DOCKER_VOLUME_STORAGE:-/mnt/docker-volumes}/xsshunter/payload-fire-images:/app/payload-fire-images
       #- ~/.config/gcloud/application_default_credentials.json:/gcloud.json
@@ -48,8 +50,7 @@ services:
     #  - traefik.http.routers.xsshunter.middlewares=local-ipwhitelist@file
   
   xsshunterexpress-trufflehog:
-    build:
-      dockerfile: Dockerfile.trufflehog
+    image: l4rm4nd/xsshunter:trufflehog
     container_name: xsshunter-trufflehog
     restart: unless-stopped
     expose:
