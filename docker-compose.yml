@@ -1,7 +1,8 @@
 services:
+  
   xsshunterexpress-db:
     image: postgres
-    container_name: xsshunterexpress-db
+    container_name: xsshunter-db
     restart: unless-stopped
     env_file:
       - .env
@@ -14,38 +15,47 @@ services:
       timeout: 5s
       retries: 5
     volumes:
-      - ./postgres-db-data:/var/lib/postgresql/data/pgdata
+      - ${DOCKER_VOLUME_STORAGE:-/mnt/docker-volumes}/xsshunter/pg_data:/var/lib/postgresql/data/pgdata
+    #networks:
+    #  - dev      
+  
   xsshunterexpress-service:
     build: .
-    container_name: xsshunterexpress-service
+    container_name: xsshunter-service
     restart: unless-stopped
     env_file:
       - .env
-    ports:
-      - 8080:8080
+    expose:
+      - 8080
     volumes:
-      - ./payload-fire-images:/app/payload-fire-images
-      - ~/.config/gcloud/application_default_credentials.json:/gcloud.json
+      - ${DOCKER_VOLUME_STORAGE:-/mnt/docker-volumes}/xsshunter/payload-fire-images:/app/payload-fire-images
+      #- ~/.config/gcloud/application_default_credentials.json:/gcloud.json
     depends_on:
       xsshunterexpress-db:
         condition: service_healthy
+    #networks:
+    #  - dev
+    #labels:
+    #  - traefik.enable=true
+    #  - traefik.http.routers.xsshunter.rule=Host(`xss.example.com`)&&PathPrefix(`/`)
+    #  - traefik.http.services.xsshunter.loadbalancer.server.port=80
+    #  - traefik.http.middlewares.limit.buffering.maxRequestBodyBytes=50000000 # optional, only necessary for enabled file uploads
+    #  - traefik.http.middlewares.limit.buffering.maxResponseBodyBytes=50000000 # optional, only necessary for enabled file uploads
+    #  - traefik.http.middlewares.limit.buffering.memRequestBodyBytes=50000000 # optional, only necessary for enabled file uploads
+    #  - traefik.http.middlewares.limit.buffering.memResponseBodyBytes=50000000 # optional, only necessary for enabled file uploads
+    #  - traefik.docker.network=dev
+    #  # Part for optional traefik middlewares
+    #  - traefik.http.routers.xsshunter.middlewares=local-ipwhitelist@file
+  
   xsshunterexpress-trufflehog:
     build:
       dockerfile: Dockerfile.trufflehog
-    container_name: xsshunterexpress-trufflehog
+    container_name: xsshunter-trufflehog
     restart: unless-stopped
-    ports:
-      - 8000:8000
-  xsshunterexpress-proxy:
-    image: caddy:alpine
-    container_name: xsshunterexpress-proxy
-    restart: unless-stopped
-    env_file:
-      - .env
-    ports:
-      - 80:80
-      - 443:443
-    volumes:
-      - ./caddy/data:/data
-      - ./caddy/config:/config
-      - ./Caddyfile:/etc/caddy/Caddyfile
+    expose:
+      - 8000
+    #networks:
+    #  - dev
+#networks:
+#  dev:
+#    external: true      
