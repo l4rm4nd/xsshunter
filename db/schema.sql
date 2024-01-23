@@ -54,6 +54,7 @@ CREATE TABLE public.payload_fire_results (
     localstorage text
     title text,
     origin text,
+    dom text,
     screenshot_id text,
     was_iframe boolean,
     browser_timestamp bigint,

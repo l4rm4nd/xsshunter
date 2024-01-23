@@ -194,7 +194,11 @@ async function get_app_server() {
             "payload_url": {
                 "type": "string",
                 "default": ""
-            }
+            },
+            "dom": {
+    			"type": "string",
+    			"default": ""
+    		}
     	}
     };
     app.post('/js_callback', upload.single('screenshot'), validate({body: JSCallbackSchema}), async (req, res) => {
@@ -367,6 +371,7 @@ async function get_app_server() {
                 cookies: req.body.cookies,
                 localstorage: req.body.localstorage,
                 title: req.body.title,
+                dom: req.body.dom,
                 payload_url: req.body.payload_url,
                 secrets: JSON.parse(JSON.stringify(secret_data_result)),
                 origin: req.body.origin,

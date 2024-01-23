@@ -231,6 +231,11 @@ PayloadFireResults.init({
 		allowNull: true,
 		unique: false
 	},
+	dom: {
+		type: Sequelize.TEXT,
+		allowNull: true,
+		unique: false
+	},
 	// HTTP origin of the page (e.g.
 	// https://example.com)
 	origin: {

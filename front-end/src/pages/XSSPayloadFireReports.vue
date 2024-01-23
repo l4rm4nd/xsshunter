@@ -177,6 +177,28 @@
                                             </div>
                                             <hr />
                                         </div>
+
+                                        <div>
+                                            <div>
+                                                <p class="report-section-label mr-2">DOM/HTML</p>
+                                                <small slot="helperText" class="form-text text-muted report-section-description">
+                                                    Rendered DOM of the vulnerable page.
+                                                </small>
+                                            </div>
+                                            <div class="m-2 mt-4">
+                                                <codemirror style="height: auto;" ref="cmEditor" v-model="report.dom" :options="{tabSize: 2, theme: 'monokai', lineNumbers: true, line: true, lint: true, lineWrapping: true, fixedGutter: true, readOnly: true}" v-if="report.dom && report.dom.length < 10000" />
+                                                <h4 v-else><i class="fas fa-exclamation-triangle"></i> Page HTML too large to display inline, please use one of the options below.</h4>
+                                                <base-button simple type="primary" class="mt-3 ml-1 mr-1" v-on:click="view_html_in_new_tab(report.dom || '')">
+                                                    <i class="fas fa-external-link-alt"></i> View Raw HTML in New Tab
+                                                </base-button>
+                                                <base-button simple type="primary" class="mt-3 ml-1 mr-1" v-on:click="download_html(report.dom || '')">
+                                                    <i class="fas fa-download"></i> Download Raw HTML
+                                                </base-button>
+                                            </div>
+                                            <hr />
+                                        </div>
+
+
                                         <div>
                                             <div>
                                                 <p class="report-section-label mr-2">Origin</p>
