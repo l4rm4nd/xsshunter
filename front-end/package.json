@@ -33,16 +33,16 @@
     "vue2-transitions": "^0.3.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^4.5.7",
+    "@vue/cli-plugin-babel": "^5.0.8",
     "@vue/cli-plugin-eslint": "^5.0.8",
-    "@vue/cli-plugin-pwa": "^4.4.6",
-    "@vue/cli-service": "^4.4.6",
+    "@vue/cli-plugin-pwa": "^5.0.8",
+    "@vue/cli-service": "^5.0.8",
     "cache-loader": "^4.1.0",
     "sass": "1.56.2",
     "sass-loader": "10.1.1",
     "vue-cli-plugin-i18n": "^2.3.2",
     "vue-template-compiler": "^2.7.16",
-    "webpack": "^4.47.0"
+    "webpack": "^5.94.0"
   },
   "browserslist": [
     "> 1%",
