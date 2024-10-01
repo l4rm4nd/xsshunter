@@ -1,7 +1,7 @@
 services:
 
   xsshunterexpress-db:
-    image: postgres:latest
+    image: postgres:16-alpine
     container_name: xsshunter-db
     restart: unless-stopped
     env_file:
