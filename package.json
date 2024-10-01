@@ -21,7 +21,7 @@
     "bcrypt": "^5.0.1",
     "body-parser": "^1.20.1",
     "cors": "^2.8.5",
-    "express": "^4.19.2",
+    "express": "^4.21.0",
     "express-jsonschema": "^1.1.6",
     "google-auth-library": "^8.7.0",
     "googleapis": "^110.0.0",
