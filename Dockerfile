@@ -1,4 +1,4 @@
-FROM node:16-bullseye
+FROM node:24-bookworm
 
 RUN mkdir /app/
 WORKDIR /app/
@@ -16,6 +16,7 @@ COPY package-lock.json /app/
 RUN npm install
 
 COPY server.js /app/
+COPY instrument.js /app/
 COPY probe.js /app/
 COPY constants.js /app/
 COPY notification.js /app/

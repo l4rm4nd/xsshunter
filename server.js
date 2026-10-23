@@ -1,5 +1,7 @@
 'use strict';
 
+require('./instrument.js');
+
 const get_app_server = require('./app.js');
 
 const database = require('./database.js');
